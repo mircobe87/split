@@ -9,13 +9,18 @@ Command line tool to split MP3 audio file un multiple subtracks, assign ID3 tags
 
 ## Usage
 ```
-usage: split.py [-h] [-c CONF]
+usage: split.py [-h] [-c CONF] [-d DIR] [SRC_FILE]
 
 Command line tool to split mp3 files and set basical Id3 tags.
 
+positional arguments:
+  SRC_FILE              source audio file (overrides what specified in conf. file)
+
 optional arguments:
   -h, --help            show this help message and exit
-  -c CONF, --conf CONF  specify the configuration .yaml file to use. (dafault splitconf.yml)
+  -c CONF, --conf CONF  specify the configuration yaml file to use. (dafault splitconf.yml)
+  -d DIR, --out-dir DIR
+                        the name of the output directory where splits will put into
 ```
 ### YAML Configuration file format
 Following an example of configuration file:
@@ -86,5 +91,5 @@ tracks:
 
 ## Notes
 - The source file will left intact after the splitting proces.
-- Every time `split.py` runs, a new output directory will be created in the current working directory. The name for output directory follows this pattern `^out_[0-9]+$`.
+- Every time `split.py` runs, a new output directory will be created in the current working directory. The name for output directory follows this pattern `^out_[0-9]+$`. If a destination folder is specified, that folder will be used instead.
 - After the plitting of all the tracks, the volume of each one is normalized.

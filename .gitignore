@@ -1,6 +1,9 @@
 out_*/
 .vscode/
 *.yml
+*.yaml
 *.mp3
 *.jpg
 *.png
+.venv/
+

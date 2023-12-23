@@ -3,9 +3,13 @@ Command line tool to split MP3 audio file un multiple subtracks, assign ID3 tags
 
 ## Dependencies
 - python3
-- replaygain (`sudo pip install rgain3`)
+- python3-venv (`sudo apt install python3-venv`)
 - eyeD3 (`sudo apt install eyed3`)
 - ffmpeg (`sudo apt install ffmpeg`)
+- replaygain
+  `sudo apt install libgirepository1.0-dev libcairo2-dev`
+  enable venv and install the following
+  `pip install rgain3`
 
 ## Usage
 ```
@@ -34,6 +38,7 @@ tracks:
     album:
     year: 2022
     cover:
+    number: 1
 
   - start_time: "00:02:22.279"
     end_time: "00:05:38.000"
@@ -83,6 +88,7 @@ tracks:
 * __tracks[*].album__: the album of the track (optional)
 * __tracks[*].artist__: the artist of the track (optional)
 * __tracks[*].year__: the release year of the track (optional)
+* __tracks[*].number__: the track number (optional)
 * __tracks[*].cover__: the name of the file to set as cover image (optional)
 * __tracks[*].start_time__: the start time of the track (mandatory)
 * __tracks[*].end_time__: the end time of the track (mandatory)

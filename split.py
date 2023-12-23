@@ -37,12 +37,13 @@ def tag_data(track_data):
     album = track_data['album'] if 'album' in track_data and track_data['album'] is not None else '<album>'
     artist = track_data['artist'] if 'artist' in track_data and track_data['artist'] is not None else '<artist>'
     title = track_data['title'] if 'title' in track_data and track_data['title'] is not None else '<title>'
-    return (year, album, artist, title)
+    number = str(track_data['number']) if 'number' in track_data and track_data['number'] is not None else '<number>'
+    return (year, album, artist, title, number)
 
 
 def get_filename(track_data):
-    year, album, artist, title = tag_data(track_data)
-    return "{}[{}]__{}-{}.mp3".format(year, album, artist, title)
+    year, album, artist, title, number = tag_data(track_data)
+    return "{}[{}]_{}-{}-{}.mp3".format(year, album, number, artist, title)
 
 
 parser = argparse.ArgumentParser(description='Command line tool to split mp3 files and set basical Id3 tags.')
@@ -99,6 +100,8 @@ with open(namespace.conf, 'r') as conf_file:
             command_options = command_options + ' -A "' + track['album'] + '"'
         if 'cover' in track and track['cover'] is not None:
             command_options = command_options + ' --add-image="' + track['cover'] + ':FRONT_COVER"'
+        if 'number' in track and track['number'] is not None:
+            command_options = command_options + ' -n "' + str(track['number']) + '"'
 
         os.system('eyeD3 {} "{}/{}"'.format(command_options, out_dirname, audio_filename))
 

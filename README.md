@@ -7,9 +7,13 @@ Command line tool to split MP3 audio file un multiple subtracks, assign ID3 tags
 - eyeD3 (`sudo apt install eyed3`)
 - ffmpeg (`sudo apt install ffmpeg`)
 - replaygain
-  `sudo apt install libgirepository1.0-dev libcairo2-dev`
-  enable venv and install the following
-  `pip install rgain3`
+  ```
+  sudo apt install libgirepository1.0-dev libcairo2-dev
+  ```
+  enable venv and install all requirements:
+  ```
+  pip install -r requirements.txt
+  ```
 
 ## Usage
 ```

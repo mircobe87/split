@@ -33,16 +33,18 @@ def get_outdir_name(dirname:str) -> str:
 
 
 def tag_data(track_data):
-    year = str(track_data['year']) if 'year' in track_data and track_data['year'] is not None else '<year>'
-    album = track_data['album'] if 'album' in track_data and track_data['album'] is not None else '<album>'
-    artist = track_data['artist'] if 'artist' in track_data and track_data['artist'] is not None else '<artist>'
-    title = track_data['title'] if 'title' in track_data and track_data['title'] is not None else '<title>'
-    number = str(track_data['number']) if 'number' in track_data and track_data['number'] is not None else '<number>'
+    year = str(track_data['year']) if 'year' in track_data and track_data['year'] is not None else ''
+    album = track_data['album'] if 'album' in track_data and track_data['album'] is not None else ''
+    artist = track_data['artist'] if 'artist' in track_data and track_data['artist'] is not None else ''
+    title = track_data['title'] if 'title' in track_data and track_data['title'] is not None else ''
+    number = str(track_data['number']) if 'number' in track_data and track_data['number'] is not None else ''
     return (year, album, artist, title, number)
 
 
 def get_filename(track_data):
     year, album, artist, title, number = tag_data(track_data)
+    if len(album) == 0:
+        return "{}_{}-{}-{}.mp3".format(year, number, artist, title)
     return "{}[{}]_{}-{}-{}.mp3".format(year, album, number, artist, title)
 
 

@@ -107,4 +107,4 @@ with open(namespace.conf, 'r') as conf_file:
 
         os.system('eyeD3 {} "{}/{}"'.format(command_options, out_dirname, audio_filename))
 
-    os.system('replaygain {}/*.mp3'.format(out_dirname))
+    os.system('mp3gain -r {}/*.mp3'.format(out_dirname))

@@ -10,7 +10,7 @@ import sys
 def check_source_file(source_file_name :str, cli_source_file_name :str) -> str:
     if source_file_name is None and cli_source_file_name is None:
         sys.exit("[ERROR] No source file name specified.")
-    file_name = cli_source_file_name if cli_source_file_name is None else source_file_name
+    file_name = cli_source_file_name if source_file_name is None else source_file_name
 
     if not os.path.exists(file_name):
         sys.exit("[ERROR] The provided audio source file does not exist: {}".format(file_name))
